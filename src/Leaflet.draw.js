@@ -10,6 +10,8 @@ L.drawLocal = {
 			title: 'Cancel drawing',
 			text: 'Cancel',
 			polyline: 'Draw a polyline',
+			bicycle: 'Draw a polyline',
+			walk: 'Draw a polyline',
 			polygon: 'Draw a polygon',
 			rectangle: 'Draw a rectangle',
 			circle: 'Draw a circle',
@@ -39,7 +41,21 @@ L.drawLocal = {
 				cont: 'Click to continue drawing line.',
 				end: 'Click last point to finish line.'
 			}
-		},
+		},	
+                bicycle: {
+			tooltip: {
+				start: 'Click to start drawing line.',
+				cont: 'Click to continue drawing line.',
+				end: 'Click last point to finish line.'
+			}
+                },
+                walk: {
+			tooltip: {
+				start: 'Click to start drawing line.',
+				cont: 'Click to continue drawing line.',
+				end: 'Click last point to finish line.'
+			}
+                },
 		rectangle: {
 			tooltip: {
 				start: 'Click and drag to draw rectangle.'

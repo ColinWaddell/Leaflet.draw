@@ -1,22 +1,13 @@
 L.DrawToolbar = L.Toolbar.extend({
 
 	options: {
-		polyline: {
+		bicycle: {
 			title: L.drawLocal.draw.toolbar.polyline
 		},
-		polygon: {
-			title: L.drawLocal.draw.toolbar.polygon
+		walk: {
+			title: L.drawLocal.draw.toolbar.polyline
 		},
-		rectangle: {
-			title: L.drawLocal.draw.toolbar.rectangle
-		},
-		circle: {
-			title: L.drawLocal.draw.toolbar.circle
-		},
-		marker: {
-			title: L.drawLocal.draw.toolbar.marker
-		}
-	},
+        },
 
 	initialize: function (options) {
 		// Ensure that the options are merged correctly since L.extend is only shallow
@@ -42,6 +33,24 @@ L.DrawToolbar = L.Toolbar.extend({
 		if (this.options.polyline) {
 			this._initModeHandler(
 				new L.Draw.Polyline(map, this.options.polyline),
+				this._toolbarContainer,
+				buttonIndex++,
+				buttonClassPrefix
+			);
+		}
+
+		if (this.options.bicycle) {
+			this._initModeHandler(
+				new L.Draw.Bicycle(map, this.options.bicycle),
+				this._toolbarContainer,
+				buttonIndex++,
+				buttonClassPrefix
+			);
+		}
+
+                if (this.options.walk) {
+			this._initModeHandler(
+				new L.Draw.Walk(map, this.options.walk),
 				this._toolbarContainer,
 				buttonIndex++,
 				buttonClassPrefix
