@@ -28,7 +28,6 @@ L.drawLocal = {
 			}
 		},
 		polygon: {
-			error: '<strong>Error:</strong> shape edges cannot cross!',
 			tooltip: {
 				start: 'Click to start drawing shape.',
 				cont: 'Click to continue drawing shape.',
@@ -36,6 +35,7 @@ L.drawLocal = {
 			}
 		},
 		polyline: {
+			error: '<strong>Error:</strong> shape edges cannot cross!',
 			tooltip: {
 				start: 'Click to start drawing line.',
 				cont: 'Click to continue drawing line.',
