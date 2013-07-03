@@ -1,21 +1,31 @@
 L.DrawToolbar = L.Toolbar.extend({
 
 	options: {
-		polyline: {
-			title: L.drawLocal.draw.toolbar.polyline
+                bike: {
+			title: 'Bike',
+                        shapeOptions: {
+                          stroke: true,
+                          color: '#b00',
+                          weight: 5,
+                          opacity: 0.9,
+                          fill: false,
+                          clickable: true
+		        }
 		},
-		polygon: {
-			title: L.drawLocal.draw.toolbar.polygon
+                walk: {
+			title: 'Walk',
+                        shapeOptions: {
+                          stroke: true,
+                          color: '#0b0',
+                          weight: 5,
+                          opacity: 0.9,
+                          fill: false,
+                          clickable: true
+		        }
 		},
-		rectangle: {
-			title: L.drawLocal.draw.toolbar.rectangle
-		},
-		circle: {
-			title: L.drawLocal.draw.toolbar.circle
-		},
-		marker: {
-			title: L.drawLocal.draw.toolbar.marker
-		}
+
+
+
 	},
 
 	initialize: function (options) {
@@ -42,6 +52,24 @@ L.DrawToolbar = L.Toolbar.extend({
 		if (this.options.polyline) {
 			this._initModeHandler(
 				new L.Draw.Polyline(map, this.options.polyline),
+				this._toolbarContainer,
+				buttonIndex++,
+				buttonClassPrefix
+			);
+		}
+
+		if (this.options.bike) {
+			this._initModeHandler(
+				new L.Draw.Bike(map, this.options.bike),
+				this._toolbarContainer,
+				buttonIndex++,
+				buttonClassPrefix
+			);
+		}
+
+		if (this.options.walk) {
+			this._initModeHandler(
+				new L.Draw.Walk(map, this.options.walk),
 				this._toolbarContainer,
 				buttonIndex++,
 				buttonClassPrefix
