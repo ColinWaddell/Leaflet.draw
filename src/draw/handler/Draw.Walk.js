@@ -1,6 +1,6 @@
 L.Draw.Walk = L.Draw.Feature.extend({
 	statics: {
-		TYPE: 'walk'
+		TYPE: 'Walk'
 	},
 
 	Walk: L.Polyline,

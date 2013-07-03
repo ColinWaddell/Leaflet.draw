@@ -1,6 +1,6 @@
 L.Draw.Bike = L.Draw.Feature.extend({
 	statics: {
-		TYPE: 'bike'
+		TYPE: 'Bike'
 	},
 
 	Bike: L.Polyline,
