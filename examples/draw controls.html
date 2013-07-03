@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet.draw vector editing handlers</title>
+
+	<link rel="stylesheet" href="libs/leaflet.css" />
+	<link rel="stylesheet" href="../dist/leaflet.draw.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
+
+	<script src="libs/leaflet-src.js"></script>
+
+	<script src="../src/Leaflet.draw.js"></script>
+
+	<script src="../src/edit/handler/Edit.Poly.js"></script>
+	<script src="../src/edit/handler/Edit.SimpleShape.js"></script>
+	<script src="../src/edit/handler/Edit.Circle.js"></script>
+	<script src="../src/edit/handler/Edit.Rectangle.js"></script>
+
+	<script src="../src/draw/handler/Draw.Feature.js"></script>
+	<script src="../src/draw/handler/Draw.Polyline.js"></script>
+	<script src="../src/draw/handler/Draw.Bike.js"></script>
+	<script src="../src/draw/handler/Draw.Walk.js"></script>
+	<script src="../src/draw/handler/Draw.Polygon.js"></script>
+	<script src="../src/draw/handler/Draw.SimpleShape.js"></script>
+	<script src="../src/draw/handler/Draw.Rectangle.js"></script>
+	<script src="../src/draw/handler/Draw.Circle.js"></script>
+	<script src="../src/draw/handler/Draw.Marker.js"></script>
+        
+	<script src="../src/Control.Draw.js"></script>
+        <script src="../src/Tooltip.js"></script>
+        <script src="../src/Toolbar.js"></script>
+
+
+        <script src="../src/draw/DrawToolbar.js"></script>
+        <script src="../src/edit/EditToolbar.js"></script>
+        <script src="../src/edit/handler/EditToolbar.Edit.js"></script>
+        <script src="../src/edit/handler/EditToolbar.Delete.js"></script>
+
+
+        <script src="../src/ext/LatLngUtil.js"></script>
+        <script src="../src/ext/PolygonUtil.js"></script>
+        <script src="../src/ext/LineUtil.Intersect.js"></script>
+        <script src="../src/ext/Polyline.Intersect.js"></script>
+        <script src="../src/ext/Polygon.Intersect.js"></script>
+
+</head>
+<body>
+	<div id="map" style="width: 800px; height: 600px; border: 1px solid #ccc"></div>
+
+	<script>
+          // create a map in the "map" div, set the view to a given place and zoom
+          var map = L.map('map').setView([51.505, -0.09], 13);
+
+          // add an OpenStreetMap tile layer
+          L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+
+          // Initialize the FeatureGroup to store editable layers
+          var drawnItems = new L.FeatureGroup();
+          map.addLayer(drawnItems);
+
+          // Initialize the draw control and pass it the FeatureGroup of editable layers
+          var drawControl = new L.Control.Draw({
+              edit: {
+                  featureGroup: drawnItems
+              }
+          });
+          map.addControl(drawControl);
+
+
+          map.on('draw:created', function (e) {
+    var type = e.layerType,
+        layer = e.layer;
+
+    if (type === 'marker') {
+        // Do marker specific actions
+    }
+
+    // Do whatever else you need to. (save to db, add to map etc)
+    map.addLayer(layer);
+});
+  </script>
+</body>
+</html>
