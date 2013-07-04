@@ -18,9 +18,9 @@ L.Draw.Bike = L.Draw.Feature.extend({
 		guidelineDistance: 20,
 		shapeOptions: {
 			stroke: true,
-			color: '#f06eaa',
-			weight: 4,
-			opacity: 0.5,
+			color: '#b00',
+			weight: 6,
+			opacity: 0.9,
 			fill: false,
 			clickable: true
 		},

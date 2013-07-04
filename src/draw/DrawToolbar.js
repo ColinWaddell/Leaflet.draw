@@ -1,7 +1,7 @@
 L.DrawToolbar = L.Toolbar.extend({
 
 	options: {
-                bike: {
+                Bike: {
 			title: 'Bike',
                         shapeOptions: {
                           stroke: true,
@@ -12,7 +12,7 @@ L.DrawToolbar = L.Toolbar.extend({
                           clickable: true
 		        }
 		},
-                walk: {
+                Walk: {
 			title: 'Walk',
                         shapeOptions: {
                           stroke: true,
@@ -58,7 +58,7 @@ L.DrawToolbar = L.Toolbar.extend({
 			);
 		}
 
-		if (this.options.bike) {
+		if (this.options.Bike) {
 			this._initModeHandler(
 				new L.Draw.Bike(map, this.options.bike),
 				this._toolbarContainer,
@@ -67,7 +67,7 @@ L.DrawToolbar = L.Toolbar.extend({
 			);
 		}
 
-		if (this.options.walk) {
+		if (this.options.Walk) {
 			this._initModeHandler(
 				new L.Draw.Walk(map, this.options.walk),
 				this._toolbarContainer,

@@ -8,7 +8,7 @@ L.EditToolbar = L.Toolbar.extend({
 			title: L.drawLocal.edit.toolbar.edit.title,
 			selectedPathOptions: {
 				color: '#fe57a1', /* Hot pink all the things! */
-				opacity: 0.6,
+				opacity: 0.9,
 				dashArray: '10, 10',
 
 				fill: true,
