@@ -265,4 +265,3 @@ L.Polyline.addInitHook(function () {
 		}
 	});
 });
-

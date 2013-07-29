@@ -1,9 +1,9 @@
 L.Draw.Walk = L.Draw.Feature.extend({
 	statics: {
-		TYPE: 'walk'
+		TYPE: 'Walk'
 	},
 
-	Poly: L.Polyline,
+	Walk: L.Polyline,
 
 	options: {
 		allowIntersection: true,
@@ -14,14 +14,13 @@ L.Draw.Walk = L.Draw.Feature.extend({
 		},
 		icon: new L.DivIcon({
 			iconSize: new L.Point(8, 8),
-			className: 'leaflet-div-icon leaflet-editing-icon'
 		}),
 		guidelineDistance: 20,
 		shapeOptions: {
 			stroke: true,
-			color: '#ff0000',
-			weight: 4,
-			opacity: 0.5,
+			color: '#124C71',
+			weight: 2,
+			opacity: 0.9,
 			fill: false,
 			clickable: true
 		},
@@ -136,8 +135,7 @@ L.Draw.Walk = L.Draw.Feature.extend({
 		// should this be moved to _updateGuide() ?
 		this._currentLatLng = latlng;
 
-		// Update the label
-		this._tooltip.updatePosition(latlng);
+		this._updateTooltip(latlng);
 
 		// Update the guide line
 		this._updateGuide(newPos);
@@ -173,6 +171,8 @@ L.Draw.Walk = L.Draw.Feature.extend({
 		this._vertexAdded(latlng);
 
 		this._clearGuides();
+
+		this._updateTooltip();
 	},
 
 	_updateFinishHandler: function () {
@@ -205,17 +205,24 @@ L.Draw.Walk = L.Draw.Feature.extend({
 		var markerCount = this._markers.length;
 
 		if (markerCount > 0) {
-			// Update the tooltip text, as long it's not showing and error
-			if (!this._errorShown) {
-				this._tooltip.updateContent(this._getTooltipText());
-			}
-
 			// draw the guide line
 			this._clearGuides();
 			this._drawGuide(
 				this._map.latLngToLayerPoint(this._markers[markerCount - 1].getLatLng()),
 				newPos
 			);
+		}
+	},
+
+	_updateTooltip: function (latLng) {
+		var text = this._getTooltipText();
+
+		if (latLng) {
+			this._tooltip.updatePosition(latLng);
+		}
+
+		if (!this._errorShown) {
+			this._tooltip.updateContent(text);
 		}
 	},
 
@@ -348,15 +355,14 @@ L.Draw.Walk = L.Draw.Feature.extend({
 	},
 
 	_cleanUpShape: function () {
-		if (this._markers.length > 0) {
+		if (this._markers.length > 1) {
 			this._markers[this._markers.length - 1].off('click', this._finishShape, this);
 		}
 	},
 
 	_fireCreatedEvent: function () {
-		var poly = new this.Poly(this._poly.getLatLngs(), this.options.shapeOptions);
+		var poly = new this.Walk(this._poly.getLatLngs(), this.options.shapeOptions);
 		L.Draw.Feature.prototype._fireCreatedEvent.call(this, poly);
 	}
 });
-
 

@@ -1,9 +1,9 @@
-L.Draw.Polyline = L.Draw.Feature.extend({
+L.Draw.Bike = L.Draw.Feature.extend({
 	statics: {
-		TYPE: 'polyline'
+		TYPE: 'Bike'
 	},
 
-	Poly: L.Polyline,
+	Bike: L.Polyline,
 
 	options: {
 		allowIntersection: true,
@@ -14,14 +14,13 @@ L.Draw.Polyline = L.Draw.Feature.extend({
 		},
 		icon: new L.DivIcon({
 			iconSize: new L.Point(8, 8),
-			className: 'leaflet-div-icon leaflet-editing-icon'
 		}),
 		guidelineDistance: 20,
 		shapeOptions: {
 			stroke: true,
-			color: '#f06eaa',
-			weight: 4,
-			opacity: 0.5,
+			color: '#1F7BA3',
+			weight: 2,
+			opacity: 0.9,
 			fill: false,
 			clickable: true
 		},
@@ -35,7 +34,7 @@ L.Draw.Polyline = L.Draw.Feature.extend({
 		}
 
 		// Save the type so super can fire, need to do this as cannot do this.TYPE :(
-		this.type = L.Draw.Polyline.TYPE;
+		this.type = L.Draw.Bike.TYPE;
 
 		L.Draw.Feature.prototype.initialize.call(this, map, options);
 	},
@@ -362,7 +361,8 @@ L.Draw.Polyline = L.Draw.Feature.extend({
 	},
 
 	_fireCreatedEvent: function () {
-		var poly = new this.Poly(this._poly.getLatLngs(), this.options.shapeOptions);
+		var poly = new this.Bike(this._poly.getLatLngs(), this.options.shapeOptions);
 		L.Draw.Feature.prototype._fireCreatedEvent.call(this, poly);
 	}
 });
+

@@ -31,6 +31,7 @@ L.EditToolbar.Delete = L.Handler.extend({
 			.on('layerremove', this._disableLayerDelete, this);
 
 		this.fire('enabled', { handler: this.type});
+		this._map.fire('draw:deleteenabled');
 	},
 
 	disable: function () {
@@ -107,3 +108,4 @@ L.EditToolbar.Delete = L.Handler.extend({
 		this._tooltip.updatePosition(e.latlng);
 	}
 });
+

@@ -1,13 +1,32 @@
 L.DrawToolbar = L.Toolbar.extend({
 
 	options: {
-		bicycle: {
-			title: L.drawLocal.draw.toolbar.polyline
+                Bike: {
+			title: 'Plot a journey made by bike',
+                        shapeOptions: {
+                          stroke: true,
+                          color: '#b00',
+                          weight: 5,
+                          opacity: 0.9,
+                          fill: false,
+                          clickable: true
+		        }
 		},
-		walk: {
-			title: L.drawLocal.draw.toolbar.polyline
+                Walk: {
+			title: 'Plot a journey made on foot',
+                        shapeOptions: {
+                          stroke: true,
+                          color: '#0b0',
+                          weight: 5,
+                          opacity: 0.9,
+                          fill: false,
+                          clickable: true
+		        }
 		},
-        },
+
+
+
+	},
 
 	initialize: function (options) {
 		// Ensure that the options are merged correctly since L.extend is only shallow
@@ -39,16 +58,16 @@ L.DrawToolbar = L.Toolbar.extend({
 			);
 		}
 
-		if (this.options.bicycle) {
+		if (this.options.Bike) {
 			this._initModeHandler(
-				new L.Draw.Bicycle(map, this.options.bicycle),
+				new L.Draw.Bike(map, this.options.bike),
 				this._toolbarContainer,
 				buttonIndex++,
 				buttonClassPrefix
 			);
 		}
 
-                if (this.options.walk) {
+		if (this.options.Walk) {
 			this._initModeHandler(
 				new L.Draw.Walk(map, this.options.walk),
 				this._toolbarContainer,
@@ -123,3 +142,4 @@ L.DrawToolbar = L.Toolbar.extend({
 		}
 	}
 });
+
