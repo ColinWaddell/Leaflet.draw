@@ -2,29 +2,14 @@ L.DrawToolbar = L.Toolbar.extend({
 
 	options: {
                 Bike: {
-			title: 'Plot a journey made by bike',
-                        shapeOptions: {
-                          stroke: true,
-                          color: '#b00',
-                          weight: 5,
-                          opacity: 0.9,
-                          fill: false,
-                          clickable: true
-		        }
+			title: 'Plot a journey made by bike'
 		},
                 Walk: {
-			title: 'Plot a journey made on foot',
-                        shapeOptions: {
-                          stroke: true,
-                          color: '#0b0',
-                          weight: 5,
-                          opacity: 0.9,
-                          fill: false,
-                          clickable: true
-		        }
+			title: 'Plot a  Walking journey'
 		},
-
-
+                Run: {
+			title: 'Plot a Running journey'
+		}
 
 	},
 
@@ -60,7 +45,7 @@ L.DrawToolbar = L.Toolbar.extend({
 
 		if (this.options.Bike) {
 			this._initModeHandler(
-				new L.Draw.Bike(map, this.options.bike),
+				new L.Draw.Bike(map, this.options.Bike),
 				this._toolbarContainer,
 				buttonIndex++,
 				buttonClassPrefix
@@ -69,7 +54,16 @@ L.DrawToolbar = L.Toolbar.extend({
 
 		if (this.options.Walk) {
 			this._initModeHandler(
-				new L.Draw.Walk(map, this.options.walk),
+				new L.Draw.Walk(map, this.options.Walk),
+				this._toolbarContainer,
+				buttonIndex++,
+				buttonClassPrefix
+			);
+		}
+
+		if (this.options.Run) {
+			this._initModeHandler(
+				new L.Draw.Run(map, this.options.Run),
 				this._toolbarContainer,
 				buttonIndex++,
 				buttonClassPrefix
