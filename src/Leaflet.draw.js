@@ -70,7 +70,7 @@ L.drawLocal = {
 	edit: {
 		toolbar: {
 			edit: {
-				title: 'Edit layers',
+				title: 'Edit Path',
 				save: {
 					title: 'Save changes.',
 					text: 'Save'
@@ -81,8 +81,8 @@ L.drawLocal = {
 				}
 			},
 			remove: {
-				title: 'Delete layers',
-				tooltip: 'Click on a feature to remove'
+				title: 'Delete Path',
+				tooltip: 'Click on a path to remove'
 			}
 		},
 		tooltip: {
